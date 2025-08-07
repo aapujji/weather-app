@@ -1,0 +1,62 @@
+:root {
+    /* icons from https://www.flaticon.com/authors/iconixar */
+    
+    /* spacing */
+    --spacingNormal: 1rem;
+
+    /*  borders */
+    --borderRadius: 4px;
+
+    /* colors */
+    --white: #fafafa;
+    --black: #3c3c3c;
+    --lightGrey: #f1f1f1;
+    --mediumGrey: #d0dad9;
+    --lightBlue: #a3d5f7;
+    --blue: #61a2d7;
+    --stormyBlue: #93afba;
+    --yellow: #fdd022;
+}
+
+* {
+    font-family: 'Quicksand', 'Helvetica', 'Arial', system-ui, sans-serif;
+    font-size: 0.875rem;
+}
+
+input {
+    border-radius: var(--borderRadius);
+    font-weight: 700;
+
+    &::placeholder {
+        font-weight: 700;
+    }
+}
+
+button {
+    cursor: pointer;
+    border-radius: var(--borderRadius);
+    font-weight: 700;
+}
+
+.search-module {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    .search-bar {
+        display: grid;
+        grid-column: 4 / 10;
+        grid-row: 3 / 4;
+        grid-template-columns: repeat(6, 1fr);
+        gap: var(--spacingNormal);
+    }
+
+    input[type=text] {
+        padding: var(--spacingNormal);
+        grid-column: 1 / 5;
+    }
+
+    button {
+        padding: var(--spacingNormal);
+        grid-column: 5 / 6;
+    }
+}

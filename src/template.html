@@ -1,19 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="css/app.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
 <body>
     <div class="container">
-        <header class="search-container">
-            <input id="searchLocation" name="searchLocation" type="text" placeholder="Enter a location" />
-            <button type="button">Search</button>
+        <header class="search-module">
+            <div class="search-bar">
+                <input id="searchLocation" name="searchLocation" type="text" placeholder="Enter a location" />
+                <button type="button">Search</button>
+            </div>
         </header>
         <main class="main-weather-content">
-
+            <div class="todays-weather"></div>
+            <div class="seven-day"></div>
         </main>
     </div>
 </body>
