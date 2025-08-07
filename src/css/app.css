@@ -92,7 +92,7 @@ button {
         gap: var(--spacing);
     }
 
-    input[type=text] {
+    input {
         padding: var(--spacing);
         flex: 1;
     }
