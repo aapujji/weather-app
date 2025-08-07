@@ -14,10 +14,8 @@
     --black: #3c3c3c;
     --lightGrey: #f1f1f1;
     --mediumGrey: #d0dad9;
-    --lightBlue: #a3d5f7;
-    --blue: #61a2d7;
-    --stormyBlue: #93afba;
-    --yellow: #fdd022;
+    --blue: rgb(97, 162, 215);
+    --lightblue: rgb(97, 162, 215, 0.9);
 }
 
 * {
@@ -104,6 +102,10 @@ button {
         min-width: 150px;
         color: var(--white);
         background-color: var(--blue);
+
+        &:hover {
+            background-color: var(--lightblue);
+        }
     }
 }
 
