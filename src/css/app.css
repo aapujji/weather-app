@@ -1,0 +1,246 @@
+:root {
+    /* icons from https://www.flaticon.com/authors/iconixar 
+    <a href="https://www.flaticon.com/free-icons/meteorology" title="meteorology icons">Meteorology icons created by Freepik - Flaticon</a>
+    */
+
+    /* spacing */
+    --spacing: 1rem;
+
+    /*  borders */
+    --borderRadius: 4px;
+
+    /* colors */
+    --white: #fafafa;
+    --black: #3c3c3c;
+    --lightGrey: #f1f1f1;
+    --mediumGrey: #d0dad9;
+    --blue: rgb(97, 162, 215);
+    --lightblue: rgb(97, 162, 215, 0.9);
+}
+
+* {
+    font-family: 'Quicksand', 'Helvetica', 'Arial', system-ui, sans-serif;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    color: var(--black);
+}
+
+body {
+    min-height: 100vh;
+    font-size: 0.875rem;
+}
+
+h2, h3, h4 {
+    font-weight: 600;
+}
+
+h2 {
+    font-size: 1rem;
+}
+
+h3 {
+    font-size: 2.5rem;
+}
+
+h4 {
+    font-size: 1.5rem;
+}
+
+input {
+    border-radius: var(--borderRadius);
+    border: 1px solid var(--mediumGrey);
+    font-weight: 700;
+
+    &::placeholder {
+        font-weight: 700;
+        color: var(--mediumGrey);
+    }
+}
+
+button {
+    cursor: pointer;
+    border-radius: var(--borderRadius);
+    font-weight: 700;
+    border: 0;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+}
+
+.header {
+    background-color: var(--white);
+    box-shadow: 0 2px var(--lightGrey);
+    border-bottom: 1px solid var(--lightGrey);
+    grid-column: 1 / 13;
+    padding: var(--spacing);
+
+    img {
+        width: 2rem;
+    }
+}
+
+.search-module {
+    grid-column: 1 / 13;
+    padding: calc(var(--spacing)*2);
+
+    .search-bar {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing);
+    }
+
+    input[type=text] {
+        padding: var(--spacing);
+        flex: 1;
+    }
+
+    button {
+        padding: var(--spacing);
+        min-width: 150px;
+        color: var(--white);
+        background-color: var(--blue);
+
+        &:hover {
+            background-color: var(--lightblue);
+        }
+    }
+}
+
+.location-text {
+    font-size: 1rem;
+
+    span {
+        font-weight: 700;
+    }
+}
+
+.main-weather-content {
+    display: grid;
+    grid-column: 1 / 13;
+    gap: var(--spacing);
+    margin: calc(var(--spacing)*2) auto;
+    padding: 0 var(--spacing);
+}
+
+.today-content,
+.forecast-content {
+    background-color: var(--white);
+    border: 1px solid var(--lightGrey);
+    padding: var(--spacing);
+    border-radius: var(--borderRadius);
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    text-align: center;
+
+    h2 {
+        padding: 0 0 var(--spacing);
+    }
+}
+
+.todays-weather {
+    .weather-module {
+        grid-template-columns: repeat(5, 1fr);
+        border: 0;
+        padding: 0;
+        
+        img {
+            width: 50%;
+        }
+    }
+}
+
+.forecast-modules {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+
+    > * {
+        grid-column: span 6;
+    }
+}
+
+.weather-module {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    justify-items: center;
+    border-bottom: 1px solid var(--lightGrey);
+    padding: var(--spacing);
+
+    &:last-child {
+        border: 0;
+    }
+
+    > * {
+        grid-column: 1 / 6;
+    }
+
+    h3 {
+        font-size: 2.5rem;
+    }
+
+    img {
+        width: 45%;
+        max-width: 150px;
+        padding-bottom: calc(var(--spacing)/2);
+    }
+}
+
+.weather-details {
+    margin: calc(var(--spacing)/2) 0;
+}
+
+.temp-range {
+    display: flex;
+    gap: var(--spacing);
+    width: fit-content;
+
+    > * {
+        flex: 1;
+    }
+}
+
+@media (min-width: 767px) {
+    .search-module {
+        grid-column: 4 / 10;
+        padding: calc(var(--spacing)*2) 0;
+        .search-bar {
+            flex-direction: row;
+        }
+
+        input {
+            flex-grow: 1;
+            flex-shrink: 0;
+        }
+    }
+
+    .main-weather-content {
+        max-width: 1440px;
+    }
+
+    .forecast-modules {
+        > * {
+            grid-column: span 2;
+        }
+    }
+
+    .weather-module {
+        border-right: 1px solid var(--lightGrey);
+
+        > * {
+            grid-column: 3 / 4;
+        }
+    }
+}
+
+@media (min-width: 1023px) {
+    .forecast-modules {
+        > * {
+            grid-column: span 1;
+        }
+    }
+
+    .weather-module {
+        border-bottom: 0;
+    }
+}
