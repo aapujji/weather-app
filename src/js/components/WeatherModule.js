@@ -19,7 +19,11 @@ const getIcon = (iconName) => {
     }
 }
 
-const WeatherModule = ({temp, minTemp, maxTemp, iconName, description}) => {
+const WeatherModule = ({formattedDate, temp, minTemp, maxTemp, iconName, description}) => {
+    console.log(formattedDate);
+    const date = createUIElement("h2", {
+        textContent: formattedDate,
+    })
     const tempH3 = createUIElement("h3", {
         textContent: `${temp}${String.fromCharCode("176")}F`,
     });
@@ -44,7 +48,7 @@ const WeatherModule = ({temp, minTemp, maxTemp, iconName, description}) => {
     }, [weatherIcon, weatherDescription]);
     const weatherModule = createUIElement("div", {
         class: "weather-module",
-    }, [tempH3, otherTempsDiv, weatherDetails]);
+    }, [date, tempH3, otherTempsDiv, weatherDetails]);
     return weatherModule;
 }
 

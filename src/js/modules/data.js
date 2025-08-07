@@ -1,3 +1,4 @@
+import { format } from "date-fns";
 const API_KEY = "FYDKFT3G7HPBF5G48DHADBD8K";
 
 async function getWeather(location = "seaford", days = "7") {
@@ -8,6 +9,7 @@ async function getWeather(location = "seaford", days = "7") {
     for (let i = 0; i < days; i++) {
         const day = data.days[i];
         let weather = {
+            formattedDate: format(day.datetime, "E, MMM d"),
             temp: Math.round(day.temp),
             minTemp: Math.round(day.tempmin),
             maxTemp: Math.round(day.tempmax),

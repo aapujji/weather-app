@@ -224,7 +224,6 @@ button {
 
     .weather-module {
         border-right: 1px solid var(--lightGrey);
-        border-bottom: 0;
 
         > * {
             grid-column: 3 / 4;
@@ -237,5 +236,9 @@ button {
         > * {
             grid-column: span 1;
         }
+    }
+
+    .weather-module {
+        border-bottom: 0;
     }
 }
