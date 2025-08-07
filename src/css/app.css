@@ -1,5 +1,7 @@
 :root {
-    /* icons from https://www.flaticon.com/authors/iconixar */
+    /* icons from https://www.flaticon.com/authors/iconixar 
+    <a href="https://www.flaticon.com/free-icons/meteorology" title="meteorology icons">Meteorology icons created by Freepik - Flaticon</a>
+    */
 
     /* spacing */
     --spacing: 1rem;
@@ -54,6 +56,7 @@ input {
 
     &::placeholder {
         font-weight: 700;
+        color: var(--mediumGrey);
     }
 }
 
@@ -64,28 +67,40 @@ button {
     border: 0;
 }
 
-.search-module {
+.container {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: repeat(5, 1fr);
+}
+
+.header {
+    background-color: var(--white);
+    box-shadow: 0 2px var(--lightGrey);
+    border-bottom: 1px solid var(--lightGrey);
+    grid-column: 1 / 13;
+    padding: var(--spacing);
+
+    img {
+        width: 2rem;
+    }
+}
+
+.search-module {
+    grid-column: 1 / 13;
+    padding: calc(var(--spacing)*2);
 
     .search-bar {
         display: flex;
-        grid-column: 4 / 10;
-        grid-row: 3 / 4;
+        flex-direction: column;
         gap: var(--spacing);
     }
 
     input[type=text] {
         padding: var(--spacing);
-        grid-column: 1 / 5;
-        flex-grow: 1;
-        flex-shrink: 0;
+        flex: 1;
     }
 
     button {
         padding: var(--spacing);
-        grid-column: 5 / 6;
         min-width: 150px;
         color: var(--white);
         background-color: var(--blue);
@@ -102,13 +117,15 @@ button {
 
 .main-weather-content {
     display: grid;
+    grid-column: 1 / 13;
     gap: var(--spacing);
-    max-width: 1024px;
     margin: calc(var(--spacing)*2) auto;
+    padding: 0 var(--spacing);
 }
 
-.todays-weather,
-.forecast {
+.today-content,
+.forecast-content {
+    background-color: var(--white);
     border: 1px solid var(--lightGrey);
     padding: var(--spacing);
     border-radius: var(--borderRadius);
@@ -122,6 +139,7 @@ button {
 
 .todays-weather {
     .weather-module {
+        grid-template-columns: repeat(5, 1fr);
         border: 0;
         padding: 0;
         
@@ -133,14 +151,18 @@ button {
 
 .forecast-modules {
     display: grid;
-    grid-template-columns: repeat(7, 1fr);
+    grid-template-columns: repeat(6, 1fr);
+
+    > * {
+        grid-column: span 6;
+    }
 }
 
 .weather-module {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     justify-items: center;
-    border-right: 1px solid var(--lightGrey);
+    border-bottom: 1px solid var(--lightGrey);
     padding: var(--spacing);
 
     &:last-child {
@@ -148,7 +170,7 @@ button {
     }
 
     > * {
-        grid-column: 3 / 4;
+        grid-column: 1 / 6;
     }
 
     h3 {
@@ -157,6 +179,7 @@ button {
 
     img {
         width: 45%;
+        max-width: 150px;
         padding-bottom: calc(var(--spacing)/2);
     }
 }
@@ -172,5 +195,47 @@ button {
 
     > * {
         flex: 1;
+    }
+}
+
+@media (min-width: 767px) {
+    .search-module {
+        grid-column: 4 / 10;
+        padding: calc(var(--spacing)*2) 0;
+        .search-bar {
+            flex-direction: row;
+        }
+
+        input {
+            flex-grow: 1;
+            flex-shrink: 0;
+        }
+    }
+
+    .main-weather-content {
+        max-width: 1440px;
+    }
+
+    .forecast-modules {
+        > * {
+            grid-column: span 2;
+        }
+    }
+
+    .weather-module {
+        border-right: 1px solid var(--lightGrey);
+        border-bottom: 0;
+
+        > * {
+            grid-column: 3 / 4;
+        }
+    }
+}
+
+@media (min-width: 1023px) {
+    .forecast-modules {
+        > * {
+            grid-column: span 1;
+        }
     }
 }

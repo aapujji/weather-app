@@ -5,7 +5,7 @@ async function getWeather(location = "seaford", days = "7") {
     const data = await response.json();
     let todaysWeather = {};
     let forecast = [];
-    for (let i = 0; i <= days; i++) {
+    for (let i = 0; i < days; i++) {
         const day = data.days[i];
         let weather = {
             temp: Math.round(day.temp),

@@ -10,19 +10,24 @@
 </head>
 <body>
     <div class="container">
-        <header class="search-module">
+        <header class="header">
+            <img src="./images/logo.png" alt="Weather App">
+        </header>
+        <div class="search-module">
             <div class="search-bar">
                 <input id="searchLocation" name="searchLocation" type="text" placeholder="Enter a location" />
                 <button type="button">Search</button>
             </div>
-        </header>
+        </div>
         <main class="main-weather-content">
             <p class="location-text">Showing weather for: <span class="location"></span></p>
-            <div class="todays-weather">
+            <div class="today-content">
                 <h2>Today</h2>
+                <div class="todays-weather"></div>
             </div>
-            <div class="forecast">
+            <div class="forecast-content">
                 <h2><span class="days"></span>-Day Forecast</h2>
+                <div class="forecast"></div>
             </div>
         </main>
     </div>
