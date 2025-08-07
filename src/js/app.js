@@ -1,24 +1,31 @@
 import { getWeather } from "./modules/data";
-import { renderForecastWeather, renderTodaysWeather } from "./dom";
+import { input, button, renderLocation, renderForecastWeather, renderTodaysWeather } from "./dom";
 import './../css/app.css';
 
-const input = document.querySelector("input");
-const button = document.querySelector("button");
+const render = async (loc) => {
+    const weatherData = await getWeather(loc);
+    const { location, todaysWeather, forecast } = weatherData;
+    renderLocation(location);
+    renderTodaysWeather(todaysWeather);
+    renderForecastWeather(forecast);
+}
+
 button.addEventListener("click", () => {
-    if (input.value) getWeather(input.value, 7);
+    if (input.value) {
+        render(input.value);
+        input.value = "";
+    }
 });
 
-async function initApp() {
-    const weatherData = await getWeather("new york city", 7);
-    const today = weatherData.todaysWeather;
-    const forecast = weatherData.forecast;
+input.addEventListener("keypress", (e) => {
+    if (input.value && e.key === "Enter") {
+        render(input.value);
+        input.value = "";
+    }
+});
 
-    // console.log(today);
-
-    console.log(forecast);
-
-    renderTodaysWeather(today);
-    forecast.map((day) => renderForecastWeather(day));
+const initApp = async () => {
+    render("new york city");
 }
 
 initApp();
